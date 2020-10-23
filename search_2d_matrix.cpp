@@ -9,8 +9,8 @@ void Print2DVector(vector<vector <int>>arr){
 		cout<<endl;
 	}
 }
-/*bool Search2DMatrix(vector<vector <int>>arr,int target){
-	bruteforce
+bool Search2DMatrix(vector<vector <int>>arr,int target){
+	//bruteforce
 	int n=arr.size(),TargetRow=-1;
 	bool isFounded=false;
 	if(n==0)return false;
@@ -45,8 +45,9 @@ void Print2DVector(vector<vector <int>>arr){
 	}
     }
 	return isFounded;
-}*/
+}
 bool Search2DMatrix(vector<vector <int>>arr,int target){
+	//better approach
 	int i=0,n=arr.size();
     if(n>0){
     	int j=arr[0].size()-1;
@@ -61,9 +62,32 @@ bool Search2DMatrix(vector<vector <int>>arr,int target){
     }
 	return false;
 }
+
+bool Search2DMatrix(vector<vector <int>>arr,int target){
+	//optimal
+	int n=arr.size();
+	if(n>0){
+		int m=arr[0].size();
+		int high=n*m-1;
+		int low=0;
+		while(low<=high){
+			int mid=low+(high-low)/2;
+			int i=mid/m;
+			int j=mid%m;
+			cout<<i<<" "<<j<<"\n";
+			if(arr[i][j]==target)
+				return true;
+			else if(arr[i][j]<target)
+				low=mid+1;
+			else
+				high=mid-1;
+		}
+	}
+	return false;
+}
 int main(){
-	vector<vector<int>> arr={{1},{3}};
-	int target=4;
+	vector<vector<int>> arr={{1,1}};
+	int target=2;
 	cout<<"Original vector"<<endl;
 	Print2DVector(arr);
 	int var=Search2DMatrix(arr,target);
