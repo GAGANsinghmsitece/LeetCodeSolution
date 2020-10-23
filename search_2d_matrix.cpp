@@ -9,7 +9,8 @@ void Print2DVector(vector<vector <int>>arr){
 		cout<<endl;
 	}
 }
-bool Search2DMatrix(vector<vector <int>>arr,int target){
+/*bool Search2DMatrix(vector<vector <int>>arr,int target){
+	bruteforce
 	int n=arr.size(),TargetRow=-1;
 	bool isFounded=false;
 	if(n==0)return false;
@@ -44,6 +45,21 @@ bool Search2DMatrix(vector<vector <int>>arr,int target){
 	}
     }
 	return isFounded;
+}*/
+bool Search2DMatrix(vector<vector <int>>arr,int target){
+	int i=0,n=arr.size();
+    if(n>0){
+    	int j=arr[0].size()-1;
+    	while(i<n && j>=0){
+    		if(arr[i][j]==target)
+    			return true;
+    		if(arr[i][j]>target)
+    			j--;
+    		else
+    			i++;
+    	}
+    }
+	return false;
 }
 int main(){
 	vector<vector<int>> arr={{1},{3}};
