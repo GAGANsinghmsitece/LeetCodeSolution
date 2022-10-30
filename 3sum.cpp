@@ -9,6 +9,7 @@ void Print2DVector(vector<vector <int>>arr){
 		cout<<endl;
 	}
 }
+
 /*vector<vector<int>> threeSum(vector<int> nums){
 	//this method is correct but it may return same triplets
 	vector<vector<int>> res;
